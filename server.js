@@ -5,6 +5,7 @@ const app = express()
 const expressLayouts = require('express-ejs-layouts')
 
 const indexRoute = require('./routes/index')
+const authorsRoute = require('./routes/index')
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -13,6 +14,7 @@ app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 app.use(express.static('public'))
 app.use('/', indexRoute)
+app.use('/authors', authorsRoute) 
 
 const mongoose = require('mongoose')
 mongoose.connect(process.env.DATABASE_URL)
